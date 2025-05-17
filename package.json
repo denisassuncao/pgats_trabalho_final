@@ -1,0 +1,16 @@
+{
+  "name": "trabalho",
+  "version": "1.0.0",
+  "main": "trabalho.js",
+  "type": "module",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/teste.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
