@@ -1,5 +1,3 @@
-// trabalho.js
-
 export function geradorDeTagsDeIdentificacao(nome) {
   return nome.toUpperCase();
 }
@@ -9,14 +7,24 @@ export function verificarSePodeSerAdotado(idade, porte) {
 }
 
 export function calcularConsumoDeRacao(nome, idade, peso) {
+  if (typeof nome !== 'string' || nome.trim() === '') {
+    throw new Error('Nome inválido');
+  }
+
+  if (typeof idade !== 'number' || idade <= 0) {
+    throw new Error('Idade inválida');
+  }
+
+  if (typeof peso !== 'number' || peso <= 0) {
+    throw new Error('Peso inválido');
+  }
+
   return peso * 300;
 }
 
 export function decidirTipoDeAtividadePorPorte(porte) {
   const atividades = {
     pequeno: 'brincar dentro de casa',
-    medio: 'passeios regulares',
-    grande: 'exercícios ao ar livre'
   };
   return atividades[porte] || 'porte não reconhecido';
 }
