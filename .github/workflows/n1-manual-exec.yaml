@@ -27,4 +27,4 @@ jobs:
         run: npm install mocha
 
       - name: Execução dos testes unitários com Mocha
-        run: npx mocha ./teste.js
+        run: npx mocha ./test/teste.js
