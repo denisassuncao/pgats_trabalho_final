@@ -1,0 +1,41 @@
+name: "Trabalho - Executar Testes com Mocha"
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x]
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Instalando Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      - name: Instalando o Yarn
+        run: npm install -g yarn
+
+      - name: Instalando as dependências do projeto
+        run: yarn
+
+      - name: Instalar mocha
+        run: npm install mocha
+
+      - name: Execução dos testes unitários com Mocha
+        run: yarn mocha ./trabalho.js
+
+      - name: Relatório de Testes
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: Relatório de Testes E2E
+          path: ./playwright-report/
