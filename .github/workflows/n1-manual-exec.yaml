@@ -5,12 +5,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  teste unitario:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [22.x]
 
     steps:
       - name: Checkout do repositório
@@ -31,11 +27,4 @@ jobs:
         run: npm install mocha
 
       - name: Execução dos testes unitários com Mocha
-        run: yarn mocha ./trabalho.js
-
-      - name: Relatório de Testes
-        uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
-        with:
-          name: Relatório de Testes E2E
-          path: ./playwright-report/
+        run: npx mocha .\teste.js
